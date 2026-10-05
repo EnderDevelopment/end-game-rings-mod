@@ -1,0 +1,30 @@
+plugins {
+    id 'fabric-loom' version '0.12.+'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraft:client:1.20.1'
+    minecraft 'net.minecraft:server:1.20.1'
+    minecraft 'net.fabricmc:fabric-loader:0.14.+'
+    minecraft 'net.fabricmc.fabric-api:fabric-api:0.76.+'
+    minecraft 'dev.emi.trinkets:trinkets:3.5.+'
+    minecraft 'software.bernie.geckolib:geckolib-fabric:3.1.+'
+}
+
+loom {
+    minecraftVersion = '1.20.1'
+    mappingsVersion = '1.20.1+build.1'
+    runDir = 'run'
+    refreshDeps {
+        refresh(dependencies.minecraft)
+    }
+}
